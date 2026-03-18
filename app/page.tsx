@@ -3,11 +3,9 @@ import { prisma } from "../lib/db";
 export default async function Home() {
   const user = await prisma.user.findMany();
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <p>User</p>
-      {user.map((user: any) => (
-        <p key={user.id}>{user.email}</p>
-      ))}
+    <div className="w-full min-h-screen flex flex-col items-center mt-20">
+      <h2 className="text-4xl font-bold">Welcome to the InternHub</h2>
+      <p className="text-lg mt-2 text-gray-600">Manage your internships here</p>
     </div>
   );
 }
