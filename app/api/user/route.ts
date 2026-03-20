@@ -17,10 +17,29 @@ const userSchema = z.object({
 const GET_INTERN_INFO = gql`
   query GetInternInfo($id: Int!) {
     User(where: { id: { _eq: $id } }) {
-      email
-      id
-      role
+    id
+    name
+    role
+    email
+    Infos {
+      address
+      college
+      course
+      createdAt
+      degree
+      departmentId
+      fullName
+      phone
+      Department {
+        name
+        managerId
+        manager {
+          name
+          email
+        }
+      }
     }
+  }
   }
 `;
 
