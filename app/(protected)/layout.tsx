@@ -1,17 +1,14 @@
-import Navigate from '@/components/Navigate';
-import { getServerSession } from 'next-auth';
-import React from 'react'
+import Navigate from "@/components/Navigate";
+import { authOptions } from "@/lib/auth";
+import { getServerSession } from "next-auth";
+import React from "react";
 
-async function ProtectedLayout({children}: {children: React.ReactNode}) {
-      const session = await getServerSession();
-      if(!session?.user){
-        return <Navigate path="/auth/login" />
-      }
-  return (
-    <div>
-        {children}
-    </div>
-  )
+async function ProtectedLayout({ children }: { children: React.ReactNode }) {
+  const session = await getServerSession(authOptions);
+  if (!session?.user) {
+    return <Navigate path="/auth/login" />;
+  }
+  return <div>{children}</div>;
 }
 
-export default ProtectedLayout
+export default ProtectedLayout;

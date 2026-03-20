@@ -16,6 +16,7 @@ function NavBar() {
         <div className='flex gap-4 bg-black text-white p-2 rounded-lg'>
             <Link className='text-lg hover:text-gray-400' href="/">Home</Link>
             <Link className='text-lg hover:text-gray-400' href="/about-us">About Us</Link>
+            <Link className='text-lg hover:text-gray-400' href="/dashboard">Dashboard</Link>
             {
               status === "loading" ? (
                 // Show nothing (or a spinner) while session is being fetched

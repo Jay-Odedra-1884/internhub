@@ -15,7 +15,7 @@ export async function GET(req: Request) {
 }
 
 export async function POST(req: Request) {
-    const { email, password } = await req.json();
+    const { email, password, name, role } = await req.json();
     if(!email) {
         return NextResponse.json({ message: "Email is required" }, { status: 400 });
     }
@@ -35,6 +35,8 @@ export async function POST(req: Request) {
         data: {
             email,
             password: hashedPassword,
+            name,
+            role,
         },
     });
     return NextResponse.json({message: "User created successfully", data:user}, { status: 201 });
