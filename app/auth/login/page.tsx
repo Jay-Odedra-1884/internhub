@@ -20,6 +20,7 @@ function page() {
     if (res?.error) {
       console.log(res.error);
     } else {
+      router.refresh();
       router.push("/");
     }
   };

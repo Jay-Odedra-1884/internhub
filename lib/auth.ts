@@ -43,6 +43,7 @@ export const authOptions: NextAuthOptions = {
 
         return {
           id: String(user.id),
+          name: user.name,
           email: user.email,
           role: user.role,
         };
@@ -71,6 +72,7 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
+        token.name = user.name;
         token.email = user.email;
         token.role = user.role;
       }
@@ -80,6 +82,7 @@ export const authOptions: NextAuthOptions = {
         "x-hasura-default-role": token.role,
         "x-hasura-allowed-roles": ["Intern", "Manager", "HR", "Admin"],
         "x-hasura-user-id": token.id,
+        "x-hasura-name": token.name,
         "x-hasura-email": token.email,
         "x-hasura-role": token.role,
       };
@@ -91,6 +94,7 @@ export const authOptions: NextAuthOptions = {
       session.user = {
         ...session.user,
         id: token.id as string,
+        name: token.name as string,
         email: token.email as string,
         role: token.role as string,
       };
